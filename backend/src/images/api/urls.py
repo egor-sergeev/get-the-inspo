@@ -1,7 +1,7 @@
 from django.urls import path
-from.views import ImageListView, ImageDetailedView
+from .views import ImageListView, ImageDetailedView
 
 urlpatterns = [
-    path('', ImageListView.as_view()),
-    path('<pk>', ImageDetailedView.as_view())
+    path('images/', ImageListView.as_view()),
+    path('images/<pk>', ImageDetailedView.as_view())
 ]

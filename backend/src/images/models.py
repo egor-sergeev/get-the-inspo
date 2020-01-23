@@ -8,7 +8,7 @@ class Image(models.Model):
 
     file = VersatileImageField(
         'Image',
-        upload_to='resources/images/',
+        upload_to='images/',
     )
 
     author_name = models.CharField(max_length=100)
