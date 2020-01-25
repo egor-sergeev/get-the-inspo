@@ -1,16 +1,16 @@
-import React, { useState, useLayoutEffect, useRef, useMemo } from 'react';
+import React, { useState, useLayoutEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import ResizeObserver from 'resize-observer-polyfill';
 import Image, { imagePropType } from './Image';
 import { computeRowLayout } from '../layouts/justified';
 
 const Gallery = React.memo(function Gallery({
-  images,
-  onClick,
-  margin,
-  limitNodeSearch,
-  targetRowHeight,
-}) {
+                                                images,
+                                                onClick,
+                                                margin,
+                                                limitNodeSearch,
+                                                targetRowHeight,
+                                            }) {
   const [containerWidth, setContainerWidth] = useState(0);
   const galleryEl = useRef(null);
 
@@ -20,7 +20,7 @@ const Gallery = React.memo(function Gallery({
       // only do something if width changes
       const newWidth = entries[0].contentRect.width;
       if (containerWidth !== newWidth) {
-        // put in an animation frame to stop "benign errors" from
+        // put in an animation frame to stop 'benign errors' from
         // ResizObserver https://stackoverflow.com/questions/49384120/resizeobserver-loop-limit-exceeded
         animationFrameID = window.requestAnimationFrame(() => {
           setContainerWidth(Math.floor(newWidth));
@@ -54,18 +54,18 @@ const Gallery = React.memo(function Gallery({
 
 
   return (
-    <div className="react-image-gallery--gallery">
+    <div className='react-image-gallery--gallery'>
       <div ref={galleryEl} style={galleryStyle}>
         {thumbs.map((thumb, index) => {
           const { containerHeight, ...image } = thumb;
           return Image({
             id: image.id,
             key: thumb.key || thumb.src,
-            containerHeight,
-            index,
-            margin,
+            alt: image.title,
+            index: index,
+            margin: margin,
             onClick: onClick ? handleClick : null,
-            image,
+            image: image,
           });
         })}
       </div>
@@ -79,7 +79,6 @@ Gallery.propTypes = {
   targetRowHeight: PropTypes.number,
   limitNodeSearch: PropTypes.number,
   margin: PropTypes.number,
-  renderImage: PropTypes.func,
 };
 
 Gallery.defaultProps = {

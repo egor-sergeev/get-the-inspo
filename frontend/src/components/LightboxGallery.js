@@ -1,6 +1,6 @@
-import React, { useState, useCallback } from "react";
-import Gallery from "./Gallery";
-import Carousel, { Modal, ModalGateway } from "react-images";
+import React, { useState, useCallback } from 'react';
+import Gallery from './Gallery';
+import Carousel, { Modal, ModalGateway } from 'react-images';
 
 
 function LightboxGallery({images}) {

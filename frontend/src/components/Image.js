@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const Image = ({ index, onClick, onMouseOver, onMouseOut, image, margin, key, id }) => {
+const Image = ({ index, onClick, onMouseOver, onMouseOut, image, margin, key, alt, id }) => {
   const imgStyle = { margin: margin, display: 'block' };
   const imgPointerStyle = { cursor: 'pointer' };
 
@@ -37,10 +37,11 @@ const Image = ({ index, onClick, onMouseOver, onMouseOut, image, margin, key, id
     <img
       key={key}
       style={onClick ? { ...imgStyle, ...imgPointerStyle } : imgStyle}
-      {...image}
+      alt={alt}
       onClick={handleClick}
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
+      {...image}
     />
   );
 };
@@ -59,9 +60,9 @@ export const imagePropType = PropTypes.shape({
 
 Image.propTypes = {
   index: PropTypes.number.isRequired,
+  margin: PropTypes.number,
   onClick: PropTypes.func,
   image: imagePropType.isRequired,
-  margin: PropTypes.number,
 };
 
 export default Image;

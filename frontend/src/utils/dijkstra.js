@@ -58,10 +58,8 @@ const buildPrecedentsMap = (graph, startNode, endNode) => {
 const getPathFromPrecedentsMap = (precedentsMap, endNode) => {
   const nodes = [];
   let n = endNode;
-  let precedent;
   while (n) {
     nodes.push(n);
-    precedent = precedentsMap[n];
     n = precedentsMap[n];
   }
   return nodes.reverse();

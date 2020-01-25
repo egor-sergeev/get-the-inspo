@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React from 'react';
 import LightboxGallery from './components/LightboxGallery';
 import axios from 'axios';
 
