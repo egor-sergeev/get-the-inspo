@@ -11,7 +11,7 @@ function LightboxGallery({images}) {
     setCurrentImage(index);
     setViewerIsOpen(true);
 
-    console.log('Image OPENED. ID = ', image.id);
+    // console.log('Image OPENED. ID = ', image.id);
 
     // TODO send action data to the server
   }, []);

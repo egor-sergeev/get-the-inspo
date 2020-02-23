@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import axios from "axios";
 
 
 const Image = ({ index, onClick, onMouseOver, onMouseOut, image, margin, key, alt, id }) => {
@@ -7,27 +8,39 @@ const Image = ({ index, onClick, onMouseOver, onMouseOut, image, margin, key, al
   const imgPointerStyle = { cursor: 'pointer' };
 
   const handleClick = event => {
-    console.log('Image CLICK. ID = ', id);
+    // console.log('Image CLICK. ID = ', id);
 
-    // TODO send action data to the server
+    axios.post('http://127.0.0.1:5000/log',
+              {event_type: 0, image_id: id})
+         .then(res => {
+            console.log('Click log have been sent');
+         });
 
     if (onClick)
         onClick(event, { image, index });
   };
 
   const handleMouseOver = event => {
-    console.log('Image OVER. ID = ', id);
+    // console.log('Image OVER. ID = ', id);
 
-    // TODO send action data to the server
+    axios.post('http://127.0.0.1:5000/log',
+              {event_type: 1, image_id: id})
+         .then(res => {
+            console.log('MouseOver log have been sent');
+         });
 
     if (onMouseOver)
         onMouseOver(event, { image, index });
   };
 
   const handleMouseOut = event => {
-    console.log('Image OUT. ID = ', id);
+    // console.log('Image OUT. ID = ', id);
 
-    // TODO send action data to the server
+    axios.post('http://127.0.0.1:5000/log',
+              {event_type: 2, image_id: id})
+         .then(res => {
+            console.log('MouseOut log have been sent');
+         });
 
     if (onMouseOut)
         onMouseOut(event, { image, index });
