@@ -1,8 +1,11 @@
 from django.db import models
 from versatileimagefield.fields import VersatileImageField
+import uuid
 
 
 class Image(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+
     title = models.CharField(max_length=200)
 
     width = models.PositiveIntegerField('Image Width', null=True, blank=True)

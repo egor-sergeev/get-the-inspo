@@ -109,6 +109,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+backend/logserver/logserver_env/
 
 # Spyder project settings
 .spyderproject

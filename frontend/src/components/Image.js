@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from "axios";
+import {uuidv4} from '../utils/uuid-generator';
 
 
 const Image = ({ index, onClick, onMouseOver, onMouseOut, image, margin, key, alt, id }) => {
@@ -9,9 +10,17 @@ const Image = ({ index, onClick, onMouseOver, onMouseOut, image, margin, key, al
 
   const handleClick = event => {
     // console.log('Image CLICK. ID = ', id);
-
+    let data = {
+        user_id: uuidv4(),
+        object_type_id: 1,
+        object_type: 'image',
+        object_id: uuidv4(),
+        action_type_id: 1,
+        action_type: 'click',
+        timestamp: + new Date()
+    } ;
     axios.post('http://127.0.0.1:5000/log',
-              {event_type: 0, image_id: id})
+              data)
          .then(res => {
             console.log('Click log have been sent');
          });
@@ -23,11 +32,11 @@ const Image = ({ index, onClick, onMouseOver, onMouseOut, image, margin, key, al
   const handleMouseOver = event => {
     // console.log('Image OVER. ID = ', id);
 
-    axios.post('http://127.0.0.1:5000/log',
-              {event_type: 1, image_id: id})
-         .then(res => {
-            console.log('MouseOver log have been sent');
-         });
+    // axios.post('http://127.0.0.1:5000/log',
+    //           {event_type: 1, image_id: id})
+    //      .then(res => {
+    //         console.log('MouseOver log have been sent');
+    //      });
 
     if (onMouseOver)
         onMouseOver(event, { image, index });
@@ -36,11 +45,11 @@ const Image = ({ index, onClick, onMouseOver, onMouseOut, image, margin, key, al
   const handleMouseOut = event => {
     // console.log('Image OUT. ID = ', id);
 
-    axios.post('http://127.0.0.1:5000/log',
-              {event_type: 2, image_id: id})
-         .then(res => {
-            console.log('MouseOut log have been sent');
-         });
+    // axios.post('http://127.0.0.1:5000/log',
+    //           {event_type: 2, image_id: id})
+    //      .then(res => {
+    //         console.log('MouseOut log have been sent');
+    //      });
 
     if (onMouseOut)
         onMouseOut(event, { image, index });
@@ -60,7 +69,7 @@ const Image = ({ index, onClick, onMouseOver, onMouseOut, image, margin, key, al
 };
 
 export const imagePropType = PropTypes.shape({
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   key: PropTypes.string,
   src: PropTypes.string.isRequired,
   width: PropTypes.number.isRequired,

@@ -83,7 +83,7 @@ Gallery.propTypes = {
 
 Gallery.defaultProps = {
   margin: 2,
-  targetRowHeight: 300,
+  targetRowHeight: 600,
 };
 
 export { Image };
