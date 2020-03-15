@@ -30,7 +30,7 @@ def log_write_view(request):
 
         data = json.loads(request.body.decode('utf-8'))
 
-        query = 'insert into logs.user_actions values ({})'.format(str(data.values())[13:-2])
+        query = 'INSERT INTO logs.user_actions VALUES ({})'.format(str(data.values())[13:-2])
 
         try:
             response = requests.post('http://127.0.0.1:8124', query)
