@@ -43,6 +43,6 @@ def log_write_view(request):
         except requests.exceptions.RequestException as e:
             return Http404
         finally:
-            return HttpResponse(status=201, content=response.content)
+            return HttpResponse(status=response.status_code, content=response.content)
     else:
         return Http404

@@ -16,6 +16,7 @@ const Image = ({ index, onClick, onMouseOver, onMouseOut, image, margin, key, al
         object_id: id,
         action_type_id: 0,
         action_type: 'click',
+        value: 0,
         timestamp: + new Date()
     };
 
@@ -37,6 +38,7 @@ const Image = ({ index, onClick, onMouseOver, onMouseOut, image, margin, key, al
         object_id: id,
         action_type_id: 1,
         action_type: 'mouseover',
+        value: 0,
         timestamp: + new Date()
     };
 
@@ -58,6 +60,7 @@ const Image = ({ index, onClick, onMouseOver, onMouseOut, image, margin, key, al
         object_id: id,
         action_type_id: 2,
         action_type: 'mouseout',
+        value: 0,
         timestamp: + new Date()
     };
     axios.post('http://127.0.0.1:8000/api/log/',

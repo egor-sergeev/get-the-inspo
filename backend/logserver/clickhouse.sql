@@ -11,6 +11,7 @@ create table if not exists logs.user_actions
     object_id      UUID,
     action_type_id UInt8,
     action_type    String,
+    value          Int64 default 0,
     "timestamp"    UInt64
 )
 ENGINE = MergeTree()
