@@ -12,7 +12,7 @@ class App extends React.Component {
 
   handleScroll = () => {
     let data = {
-        user_id: uuidv4(), // Generating random UUID for user_id while it's not supported yet:
+        user_id: 'd2784698-a30a-4794-86b2-616e6f141b91', // Generating random UUID for user_id while it's not supported yet:
         object_type_id: 0,
         object_type: 'image',
         object_id: uuidv4(true),
