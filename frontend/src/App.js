@@ -7,22 +7,20 @@ let lastScrollY = 0;
 
 class App extends React.Component {
   state = {
-    images: []
+    images: [],
+    user_id: uuidv4(false)
   };
 
   handleScroll = () => {
     let data = {
-        user_id: 'd2784698-a30a-4794-86b2-616e6f141b91', // Generating random UUID for user_id while it's not supported yet:
-        object_type_id: 0,
+        user_id: this.state.user_id,
         object_type: 'image',
-        object_id: uuidv4(true),
-        action_type_id: 3,
         action_type: 'scroll',
         value: window.scrollY - lastScrollY,
         timestamp: + new Date()
     };
 
-    axios.post('http://127.0.0.1:8000/api/log/',
+    axios.post('http://167.172.39.249:5000/log/',
               data)
          .then(res => {
             // console.log('Scroll log have been sent');
@@ -49,7 +47,7 @@ class App extends React.Component {
   render() {
     return (
     <div>
-      <LightboxGallery images={this.state.images}/>
+      <LightboxGallery images={this.state.images} user_id={this.state.user_id}/>
     </div>
   );
   }

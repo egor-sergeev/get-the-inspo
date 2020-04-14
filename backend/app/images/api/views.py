@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, Http404
 import json
 import requests
+from requests.auth import HTTPBasicAuth
 
 
 class ImageListView(ListAPIView):
@@ -33,7 +34,7 @@ def log_write_view(request):
         query = 'INSERT INTO logs.user_actions VALUES ({})'.format(str(data.values())[13:-2])
 
         try:
-            response = requests.post('http://127.0.0.1:8124', query)
+            response = requests.post('http://167.172.39.249:8124', query, auth=HTTPBasicAuth('default', 'hudozi95'))
         except requests.exceptions.Timeout:
             # Maybe set up for a retry, or continue in a retry loop
             return HttpResponse(status=408)

@@ -1,26 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from "axios";
-import {uuidv4} from '../utils/uuid-generator';
+import appObject from "../index";
 
 
-const Image = ({ index, onClick, onMouseOver, onMouseOut, image, margin, key, alt, id }) => {
+const Image = ({ index, onClick, onMouseOver, onMouseOut, image, margin, key, alt, id}) => {
   const imgStyle = { margin: margin, display: 'block' };
   const imgPointerStyle = { cursor: 'pointer' };
 
   const handleClick = event => {
     let data = {
-        user_id: 'd2784698-a30a-4794-86b2-616e6f141b91', // Generating random UUID for user_id while it's not supported yet:
-        object_type_id: 0,
+        user_id: appObject.state.user_id,
         object_type: 'image',
         object_id: id,
-        action_type_id: 0,
         action_type: 'click',
-        value: 0,
         timestamp: + new Date()
     };
 
-    axios.post('http://127.0.0.1:8000/api/log/',
+    axios.post('http://167.172.39.249:5000/log/',
               data)
          .then(res => {
             // console.log('Click log have been sent');
@@ -32,17 +29,14 @@ const Image = ({ index, onClick, onMouseOver, onMouseOut, image, margin, key, al
 
   const handleMouseOver = event => {
     let data = {
-        user_id: 'd2784698-a30a-4794-86b2-616e6f141b91', // Generating random UUID for user_id while it's not supported yet:
-        object_type_id: 0,
+        user_id: appObject.state.user_id,
         object_type: 'image',
         object_id: id,
-        action_type_id: 1,
         action_type: 'mouseover',
-        value: 0,
         timestamp: + new Date()
     };
 
-    axios.post('http://127.0.0.1:8000/api/log/',
+    axios.post('http://167.172.39.249:5000/log/',
               data)
          .then(res => {
             // console.log('MouseOver log have been sent');
@@ -54,16 +48,13 @@ const Image = ({ index, onClick, onMouseOver, onMouseOut, image, margin, key, al
 
   const handleMouseOut = event => {
     let data = {
-        user_id: 'd2784698-a30a-4794-86b2-616e6f141b91', // Generating random UUID for user_id while it's not supported yet:
-        object_type_id: 0,
+        user_id: appObject.state.user_id,
         object_type: 'image',
         object_id: id,
-        action_type_id: 2,
         action_type: 'mouseout',
-        value: 0,
         timestamp: + new Date()
     };
-    axios.post('http://127.0.0.1:8000/api/log/',
+    axios.post('http://167.172.39.249:5000/log/',
               data)
          .then(res => {
             // console.log('MouseOut log have been sent');

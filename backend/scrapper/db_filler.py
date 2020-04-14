@@ -5,7 +5,7 @@ import os
 
 
 def main():
-    with open('image_urls.txt') as f:
+    with open('image_urls_girls.txt') as f:
         urls = f.read().splitlines()
 
     for url in urls:
@@ -16,7 +16,7 @@ def main():
 
         files = {'src': open('temp.jpg', 'rb')}
         data = {'title': 'Image'}
-        response = requests.post('http://127.0.0.1:8000/api/images/create/', data=data, files=files)
+        response = requests.post('http://0.0.0.0:8000/api/images/create/', data=data, files=files)
 
         f.close()
         os.remove('temp.jpg')

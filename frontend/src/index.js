@@ -4,6 +4,8 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 
-ReactDOM.render(<App />, document.getElementById('app'));
+let appObject = ReactDOM.render(<App />, document.getElementById('app'));
 
 serviceWorker.unregister();
+
+export default appObject;
