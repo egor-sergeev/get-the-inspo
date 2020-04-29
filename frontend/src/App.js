@@ -4,6 +4,10 @@ import axios from 'axios';
 import {uuidv4} from "./utils/uuid-generator";
 
 let lastScrollY = 0;
+// const logserver_url = 'http://167.172.39.249:5000/';
+const logserver_url = 'http://127.0.0.1:5000/';
+// const app_backend_url = 'http://127.0.0.1:8000/';
+const app_backend_url = 'http://167.172.39.249:8000/';
 
 class App extends React.Component {
   state = {
@@ -20,7 +24,7 @@ class App extends React.Component {
         timestamp: + new Date()
     };
 
-    axios.post('http://167.172.39.249:5000/log/',
+    axios.post(logserver_url + 'log/',
               data)
          .then(res => {
             // console.log('Scroll log have been sent');
@@ -32,7 +36,7 @@ class App extends React.Component {
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll, true);
 
-    axios.get('http://127.0.0.1:8000/api/images/')
+    axios.get(app_backend_url + 'api/images/')
          .then(res => {
            this.setState({
              images: res.data
@@ -54,4 +58,4 @@ class App extends React.Component {
 }
 
 export default App;
-
+export {logserver_url, app_backend_url}

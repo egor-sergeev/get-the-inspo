@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import axios from "axios";
 import appObject from "../index";
+import { logserver_url } from "../App";
 
 
 const Image = ({ index, onClick, onMouseOver, onMouseOut, image, margin, key, alt, id}) => {
@@ -17,7 +18,7 @@ const Image = ({ index, onClick, onMouseOver, onMouseOut, image, margin, key, al
         timestamp: + new Date()
     };
 
-    axios.post('http://167.172.39.249:5000/log/',
+    axios.post(logserver_url + 'log/',
               data)
          .then(res => {
             // console.log('Click log have been sent');
@@ -36,7 +37,7 @@ const Image = ({ index, onClick, onMouseOver, onMouseOut, image, margin, key, al
         timestamp: + new Date()
     };
 
-    axios.post('http://167.172.39.249:5000/log/',
+    axios.post(logserver_url + 'log/',
               data)
          .then(res => {
             // console.log('MouseOver log have been sent');
@@ -54,7 +55,7 @@ const Image = ({ index, onClick, onMouseOver, onMouseOut, image, margin, key, al
         action_type: 'mouseout',
         timestamp: + new Date()
     };
-    axios.post('http://167.172.39.249:5000/log/',
+    axios.post(logserver_url + 'log/',
               data)
          .then(res => {
             // console.log('MouseOut log have been sent');
